@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  pomodoapi:
+    image: ${DOCKER_REGISTRY-}pomodoapi
+    build:
+      context: .
+      dockerfile: Dockerfile

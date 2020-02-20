@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  pomodoapi:
+    image: pomodoapi:dev
+    container_name: pomodoapi
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "pomodoapi"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - C:\Users\Romain\Documents\Projects\pomodoapi:/app
+      - C:\Users\Romain\Documents\Projects\pomodoapi:/src
+      - C:\Users\Romain\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Romain\.nuget\packages\:/root/.nuget/packages:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"bin/Debug/netcoreapp3.1/pomodoapi.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
