@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Pomodotypes.fs" />
+    <Compile Include="Exception.fs" />
+    <Compile Include="JwtHandler.fs" />
+    <Compile Include="Appconfig.fs" />
+    <Compile Include="Database.fs" />
+    <Compile Include="Helpers.fs" />
+    <Compile Include="Dal\Tag.fs" />
+    <Compile Include="Dal\Pomodoro.fs" />
+    <Compile Include="Dal\User.fs" />
+    <Compile Include="Filters\AuthFilter.fs" />
+    <Compile Include="Controllers\PomodoroController.fs" />
+    <Compile Include="Controllers\TagController.fs" />
+    <Compile Include="Controllers\AuthController.fs" />
+    <Compile Include="Controllers\UserController.fs" />
+    <Compile Include="Startup.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Dockerfile" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="FSharp.Data" Version="3.3.3" />
+    <PackageReference Include="jose-jwt" Version="2.5.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
+</Project>
