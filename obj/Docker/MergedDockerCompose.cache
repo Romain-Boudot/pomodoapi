@@ -7,5 +7,6 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
     image: pomodoapi
     ports:
-    - target: 80
+    - published: 5555
+      target: 80
 version: '3.4'

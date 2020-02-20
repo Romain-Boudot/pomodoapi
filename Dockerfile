@@ -3,13 +3,14 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["pomodoapi.fsproj", "./"]
-RUN dotnet restore "pomodoapi.fsproj"
+COPY ["pomodoapi.fsproj", ""]
+RUN dotnet restore "./pomodoapi.fsproj"
 COPY . .
-WORKDIR "/src/"
+WORKDIR "/src/."
 RUN dotnet build "pomodoapi.fsproj" -c Release -o /app/build
 
 FROM build AS publish
