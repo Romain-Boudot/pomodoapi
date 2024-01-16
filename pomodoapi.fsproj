@@ -37,7 +37,7 @@
     <PackageReference Include="FSharp.Data" Version="3.3.3" />
     <PackageReference Include="jose-jwt" Version="2.5.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
 </Project>
